@@ -10,7 +10,7 @@ class Cli {
   // TODO: update the vehicles property to accept Truck and Motorbike objects as well
   // TODO: You will need to use the Union operator to define additional types for the array
   // TODO: See the AbleToTow interface for an example of how to use the Union operator
-  vehicles: (Car)[];
+  vehicles: (Car | Truck | Motorbike)[];
   selectedVehicleVin: string | undefined;
   exit: boolean = false;
 
@@ -149,27 +149,44 @@ class Cli {
           message: 'Enter Model',
         },
         {
-          type: 'input',
+          type: 'number',
           name: 'year',
           message: 'Enter Year',
         },
         {
-          type: 'input',
+          type: 'number',
           name: 'weight',
           message: 'Enter Weight',
         },
         {
-          type: 'input',
+          type: 'number',
           name: 'topSpeed',
           message: 'Enter Top Speed',
         },
         {
-          type: 'input',
+          type: 'number',
           name: 'towingCapacity',
           message: 'Enter Towing Capacity',
         },
       ])
       .then((answers) => {
+        const wheel1 = new Wheel();
+        const wheel2 = new Wheel();
+        const wheel3 = new Wheel();
+        const wheel4 = new Wheel();
+
+        const newTruck = new Truck(
+          Cli.generateVin(),
+          answers.color,
+          answers.make,
+          answers.model,
+          answers.year,
+          answers.weight,
+          answers.topSpeed,
+          [wheel1, wheel2, wheel3, wheel4],
+          answers.towingCapacity
+        );
+
         // TODO: Use the answers object to pass the required properties to the Truck constructor
         // TODO: push the truck to the vehicles array
         // TODO: set the selectedVehicleVin to the vin of the truck
@@ -288,14 +305,18 @@ class Cli {
         },
       ])
       .then((answers) => {
+
+        const selectedVehicle = this.vehicles.find((vehicleObj) => {
+          if (this.vehicleObj = this.selectedVehicleVin) {
+            return vehicleObj;
+          }
+
+          return false;
+        });
         // perform the selected action
         if (answers.action === 'Print details') {
           // find the selected vehicle and print its details
-          for (let i = 0; i < this.vehicles.length; i++) {
-            if (this.vehicles[i].vin === this.selectedVehicleVin) {
-              this.vehicles[i].printDetails();
-            }
-          }
+          selectedVehicle?.printDetails();
         } else if (answers.action === 'Start vehicle') {
           // find the selected vehicle and start it
           for (let i = 0; i < this.vehicles.length; i++) {
@@ -388,3 +409,35 @@ class Cli {
 
 // export the Cli class
 export default Cli;
+
+
+
+// const data = [
+//   {
+//     name: 'JD',
+//     age: 22
+//   },
+//   {
+//     name: 'Bob',
+//     age: 21
+//   },
+//   {
+//     name: 'Jane',
+//     age: 19
+//   }
+// ];
+
+
+// const bob = data.find((userObj) => {
+//   if (userObj.name === 'Bob') {
+//     return userObj;
+//   }
+
+//   return false;
+// });
+
+// for (let i = 0; i < data.length; i++) {
+//   if (data[i].name === 'Bob') {
+
+//   }
+// }
