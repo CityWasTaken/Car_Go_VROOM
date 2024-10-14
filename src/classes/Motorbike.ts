@@ -77,7 +77,6 @@ class Motorbike extends Vehicle {
 
 const ninja = new Motorbike('G12354681', 'Silver', 'Kawasaki', 'Ninja', 2024, 308, 65, [], false, 0)
 
-ninja.printDetails();
 
 // Export the Motorbike class as the default export
 export default Motorbike;
