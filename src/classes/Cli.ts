@@ -221,7 +221,7 @@ class Cli {
           message: 'Enter Make',
         },
         {
-          type: 'number',
+          type: 'input',
           name: 'model',
           message: 'Enter Model',
         },
@@ -246,7 +246,7 @@ class Cli {
           message: 'Enter Front Wheel Diameter',
         },
         {
-          type: 'number',
+          type: 'input',
           name: 'frontWheelBrand',
           message: 'Enter Front Wheel Brand',
         },
@@ -256,7 +256,7 @@ class Cli {
           message: 'Enter Rear Wheel Diameter',
         },
         {
-          type: 'number',
+          type: 'input',
           name: 'rearWheelBrand',
           message: 'Enter Rear Wheel Brand',
         },
